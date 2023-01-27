@@ -70,6 +70,11 @@ class ObjectStorageAdapter extends AwsS3V3Adapter
         );
     }
 
+    public function getUrl(string $path)
+    {
+        return $this->client->getConfig('url') . '/' . $path;
+    }
+
     public function write(string $path, string $contents, Config $config): void
     {
         $this->upload($path, $contents, $config);
